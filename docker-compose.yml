@@ -1,9 +1,9 @@
 version: "3.5"
 
 services:
-  mysql_db:
+  db:
     image: mysql:5.7
-    container_name: mysql_db
+    container_name: ${COMPOSE_PROJECT_NAME}_db
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: Password123
@@ -18,11 +18,11 @@ services:
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
 
-  mysql_adminer:
+  adminer:
     image: adminer:latest
-    container_name: mysql_adminer
+    container_name: ${COMPOSE_PROJECT_NAME}_adminer
     environment:
-      ADMINER_DEFAULT_SERVER: mysql_db
+      ADMINER_DEFAULT_SERVER: db
     ports:
       - '8081:8080'
     volumes:
@@ -30,4 +30,4 @@ services:
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     depends_on:
-      - "mysql_db"
+      - "db"
