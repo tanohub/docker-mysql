@@ -1,0 +1,31 @@
+{
+	"MYSQL_DATABASE_HOST": "localhost",
+	"MYSQL_DATABASE_PORT": "3306",
+	"MYSQL_DATABASE_USER": "root",
+	"MYSQL_DATABASE_PASSWORD": "Password123",
+	"MYSQL_DATABASE_NAME": "DB01",
+	"MYSQL_DATABASE_TABLE_NAME": "db01tab01",
+	"NUMBER_OF_ROWS": 200,
+	"COLUMNS": [
+                {
+                        "NAME": "id",
+                        "TYPE": "NULL"
+                },
+		{
+			"NAME": "name",
+			"TYPE": "NAME"
+		},
+		{
+			"NAME": "surname",
+			"TYPE": "SURNAME"
+		},
+                {
+                        "NAME": "email",
+                        "TYPE": "EMAIL"
+                },
+                {
+                        "NAME": "birth",
+                        "TYPE": "DATE"
+                }
+	]
+}
