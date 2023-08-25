@@ -4,7 +4,7 @@ services:
   db:
     image: mysql:5.7
     container_name: ${COMPOSE_PROJECT_NAME}_db
-    command: --default-authentication-plugin=mysql_native_password
+    command: --default-authentication-plugin=mysql_native_password --sql_mode="ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
     environment:
       MYSQL_ROOT_PASSWORD: Password123
     ports:
@@ -12,8 +12,10 @@ services:
     volumes:
       # mysql init DB and users
       - ./provision/mysql/init:/docker-entrypoint-initdb.d
+      # mysql scripts and stuff
+      - ./data/mysql/scripts:/root/mysql/scripts
       # mysql data bind mount
-      - ./data/mysql:/var/lib/mysql
+#      - ./data/mysql:/var/lib/mysql
       # force local timezone
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
